@@ -1,4 +1,5 @@
 import { site } from "../data/content";
+import coverImage from "../assets/the-book-of-shorts-cover-new.jpg";
 
 export default function BookMockup() {
   return (
@@ -20,7 +21,7 @@ export default function BookMockup() {
         <div className="relative h-full w-full overflow-hidden rounded-l-sm rounded-r-md border border-white/[0.08] shadow-2xl shadow-black/80 ring-1 ring-inset ring-white/[0.04]">
           {/* Your flat cover image */}
           <img
-            src="public/the-book-of-shorts-cover-new.jpg"
+            src={coverImage}
             alt={`${site.title} by ${site.author}`}
             className="h-full w-full object-cover"
           />
