@@ -13,8 +13,7 @@ export default function CTASection() {
           <p className="mt-4 leading-relaxed text-zinc-400">{cta.body}</p>
 
           <div className="mt-8">
-            <EmailForm id="final" />
-            <p className="text-sm text-zinc-500">{form.trust}</p>
+            <EmailForm />
           </div>
 
           <div className="my-8 flex items-center gap-4" aria-hidden="true">

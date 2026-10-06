@@ -1,76 +1,123 @@
-import { useState } from "react";
-import { ArrowRight, Check, Loader2 } from "lucide-react";
-import { form } from "../data/content";
+import React, { useState } from "react";
+import { Check, AlertCircle, ArrowRight, Loader2 } from "lucide-react";
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function EmailForm({ id }) {
+export default function EmailForm() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function onSubmit(e) {
     e.preventDefault();
     if (status === "loading") return;
-    if (!EMAIL_RE.test(email.trim())) return setStatus("error");
+
+    const trimmed = email.trim();
+    if (!EMAIL_RE.test(trimmed)) {
+      setStatus("error");
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
 
     setStatus("loading");
-    // TODO: replace with your email provider (ConvertKit, Beehiiv, own endpoint):
-    // await fetch("/api/subscribe", { method: "POST", body: JSON.stringify({ email }) });
-    await new Promise((r) => setTimeout(r, 900));
-    setStatus("success");
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("https://formspree.io/f/mwlvppyp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email: trimmed,
+          _subject: "New Preview Access: The Book of Shorts",
+        }),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (res.ok) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+        setErrorMessage(data?.error || "Submission failed. Please try again.");
+      }
+    } catch (err) {
+      setStatus("error");
+      setErrorMessage("Network error. Please check your connection.");
+    }
   }
 
   if (status === "success") {
     return (
-      <div role="status" className="flex items-start gap-3 rounded-lg border border-amber-200/20 bg-zinc-900/60 p-4">
-        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-200/90 text-zinc-950">
-          <Check className="h-4 w-4" aria-hidden="true" />
-        </span>
-        <div>
-          <p className="font-medium text-zinc-100">{form.successTitle}</p>
-          <p className="mt-1 text-sm text-zinc-400">{form.successBody.replace("{email}", email.trim())}</p>
+      <div className="w-full max-w-md space-y-4 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5 text-center">
+        <div className="flex items-center justify-center gap-2 text-emerald-400 text-sm font-medium">
+          <Check className="w-5 h-5 shrink-0" />
+          <span>You're in! Access your preview below:</span>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
+          {/* Primary: Dub tracking link to Heyzine */}
+          <a
+            href="https://dub.sh/tbospreview"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-100 text-zinc-950 text-sm font-semibold hover:bg-zinc-200 transition-colors"
+          >
+            Read Interactive Preview
+            <ArrowRight className="w-4 h-4" />
+          </a>
+
+          {/* Secondary: Raw PDF download */}
+          <a
+            href="/preview.pdf"
+            download="The_Book_of_Shorts_Preview.pdf"
+            className="w-full sm:w-auto text-xs text-zinc-400 hover:text-zinc-200 underline underline-offset-4 py-2"
+          >
+            Or download PDF
+          </a>
         </div>
       </div>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate>
-      <div className="flex flex-col gap-3 sm:flex-row">
-        <label htmlFor={`${id}-email`} className="sr-only">Email address</label>
+    <div className="w-full max-w-md">
+      <form onSubmit={onSubmit} className="flex flex-col sm:flex-row gap-2">
         <input
-          id={`${id}-email`}
           type="email"
-          inputMode="email"
-          autoComplete="email"
-          placeholder={form.placeholder}
           value={email}
-          onChange={(e) => { setEmail(e.target.value); if (status === "error") setStatus("idle"); }}
-          aria-invalid={status === "error"}
-          aria-describedby={`${id}-error`}
-          className="h-12 w-full rounded-lg border border-white/[0.1] bg-zinc-900/60 px-4 text-base text-zinc-100 placeholder:text-zinc-500 transition-shadow focus:border-zinc-500 focus:ring-1 focus:ring-zinc-400 focus:outline-none sm:flex-1"
+          onChange={(e) => {
+            setEmail(e.target.value);
+            if (status === "error") setStatus("idle");
+          }}
+          placeholder="Enter your email"
+          className="flex-1 px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:border-zinc-500 text-sm"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-lg bg-zinc-100 px-5 font-medium text-zinc-950 transition-shadow hover:shadow-[0_0_28px_-4px_rgba(253,230,138,0.4)] focus:ring-1 focus:ring-zinc-400 focus:ring-offset-2 focus:ring-offset-zinc-950 focus:outline-none disabled:opacity-70"
+          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-100 text-zinc-950 font-medium hover:bg-zinc-200 transition-colors text-sm disabled:opacity-50"
         >
           {status === "loading" ? (
-            <>
-              <Loader2 className="h-4 w-4 animate-spin motion-reduce:animate-none" aria-hidden="true" />
-              {form.sending}
-            </>
+            <Loader2 className="w-4 h-4 animate-spin" />
           ) : (
             <>
-              {form.button}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              Get Preview
+              <ArrowRight className="w-4 h-4" />
             </>
           )}
         </button>
-      </div>
-      <p id={`${id}-error`} aria-live="polite" className="mt-2 min-h-5 text-sm text-red-400">
-        {status === "error" ? form.invalid : ""}
-      </p>
-    </form>
+      </form>
+
+      {/* Visible Error Message */}
+      {status === "error" && (
+        <div className="mt-2.5 flex items-center gap-2 text-rose-400 text-xs">
+          <AlertCircle className="w-4 h-4 shrink-0" />
+          <span>{errorMessage}</span>
+        </div>
+      )}
+    </div>
   );
 }

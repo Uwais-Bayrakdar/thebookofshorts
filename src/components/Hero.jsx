@@ -13,7 +13,6 @@ export default function Hero() {
 
         <div id="preview" className="mt-8 max-w-xl scroll-mt-24">
           <EmailForm id="hero" />
-          <p className="text-sm text-zinc-500">{form.trust}</p>
         </div>
       </div>
 

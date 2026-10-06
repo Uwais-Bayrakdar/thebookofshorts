@@ -1,9 +1,7 @@
-// All editable copy lives here. Icon values are Lucide icon names mapped in the components.
-
 export const site = {
   title: "The Book of Shorts",
   author: "Uwais Bayrakdar",
-  purchaseUrl: "https://gumroad.com/l/your-product", // Gumroad / Stripe link
+  purchaseUrl: "https://www.kobo.com/ebook/the-book-of-shorts",
   privacyUrl: "/privacy",
   socials: [
     { label: "Instagram", href: "https://instagram.com/uwaisbayrakdar" },
@@ -19,92 +17,44 @@ export const form = {
   invalid: "Enter a valid email address.",
   successTitle: "Check your inbox.",
   successBody: "The 4-chapter preview PDF is on its way to {email}.",
-  trust: "Instant PDF delivery. No spam, ever.",
 };
 
 export const nav = { cta: "Get Free Preview" };
 
 export const hero = {
-  headline: "Cut through the noise. Your willpower was never the problem.",
+  headline: "Stop overcomplicating productivity. Your willpower was never the problem.",
   subheadline:
-    "Forty short chapters on focus, execution, and beating procrastination. Each one makes a single point, then stops. No padding, no recycled stories, no 300-page stretch.",
+    "Forty standalone chapters covering habits, focus, mental momentum, and daily execution. Read them in order or flip to any page, each entry gets straight to the point.",
   coverTagline: "Focus, execution, and no filler.",
 };
 
 export const problem = {
-  title: "The Fluff Trap",
+  title: "Why Most Advice Fails Today",
   intro:
-    "Most self-help books stretch one good point across 300 pages. You finish feeling productive and change nothing. Here is what the advice says, and what actually happens.",
+    "Most self-help advice demands hours of reading before you ever take action. When your focus is drained, long explanations just lead to burnout, not momentum.",
   adviceLabel: "Traditional advice",
   realityLabel: "The reality",
   cards: [
     {
       icon: "Lock",
-      title: "Willpower vs. a rigged environment",
-      advice: "Just try harder. Wake up earlier, find your why, stay motivated.",
+      title: "Willpower vs. Your Surroundings",
+      advice: "Just try harder. Wake up earlier, Push your limits, Stay motivated.",
       reality:
-        "Your phone, your desk, and your feed are built to win. Change the setup and the effort you need drops.",
+        "Your phone, your feed, and your desk are designed to win. Fix your environment first, and focus stops feeling like a constant battle.",
     },
     {
       icon: "Gauge",
-      title: "Sprinting vs. sustainable pacing",
+      title: "Extreme Sprints vs. Daily Consistency",
       advice: "Go all in. Thirty days, no zero days, no excuses.",
       reality:
-        "All-or-nothing turns one missed day into quitting. A pace you can hold beats a sprint you can't.",
+        "Hard routines collapse the moment life gets busy. A small habit you can keep on your worst days beats an intense sprint you quit next week.",
     },
     {
       icon: "Hammer",
-      title: "Endless \u201Cresearch\u201D vs. real friction",
-      advice: "Read one more book. Watch one more breakdown. Prepare first.",
+      title: "Tutorial \u201CHell\u201D vs. Real Practice",
+      advice: "One more Youtube video. One more productivity guide. Prepare first.",
       reality:
-        "Consuming feels like progress and costs nothing. Doing costs friction, and friction is where results come from.",
-    },
-  ],
-};
-
-export const chapters = {
-  title: "What\u2019s inside",
-  intro: "Short chapters you can read in one sitting and use the same day. Four of the ideas inside:",
-  items: [
-    {
-      icon: "ToggleRight",
-      title: "The Environment Switch",
-      summary: "Stop relying on discipline in a setup designed to beat it.",
-      points: [
-        "Make the right action the easy one",
-        "Add friction to what distracts you, remove it from what matters",
-        "Stop renegotiating with yourself every morning",
-      ],
-    },
-    {
-      icon: "Target",
-      title: "Breaking All-or-Nothing Perfectionism",
-      summary: "Why one bad day doesn't have to end the streak.",
-      points: [
-        "A missed day is data, not a verdict",
-        "Set a minimum version of the habit that survives bad days",
-        "Ship the rough draft",
-      ],
-    },
-    {
-      icon: "Timer",
-      title: "Beating the Deadline Trap",
-      summary: "Urgency works, but it is a costly way to get anything done.",
-      points: [
-        "Why urgency makes a bad manager",
-        "Build your own checkpoints before the pressure arrives",
-        "Short, defined work blocks instead of last-minute heroics",
-      ],
-    },
-    {
-      icon: "BookOpen",
-      title: "Knowledge vs. Execution Friction",
-      summary: "Knowing what to do and doing it are different skills.",
-      points: [
-        "Cap the research and set a start time",
-        "Shrink the first action until you can start today",
-        "Treat friction as the signal that you are doing the real work",
-      ],
+        "Gaining information feels like work, but changes nothing. Five minutes of messy action beats hours of tutorials on how to start.",
     },
   ],
 };
@@ -112,9 +62,9 @@ export const chapters = {
 export const author = {
   title: "Why it\u2019s short",
   paragraphs: [
-    "I wrote this book short on purpose. Too many self-help books hide one useful idea inside hundreds of pages of rewording, stories, and repetition.",
-    "So I cut everything except the idea. Each chapter is brief, makes its point, and ends when the point ends.",
-    "You have enough to read already. This is meant to be used.",
+  "I wrote this book to solve my own problems first, then decided to share it.",
+  "I wasn't naturally disciplined. I spent years doom-scrolling, struggling to read consistently, and abandoning workout routines after a couple of days.",
+  "I found plenty of useful ideas over the years, but I kept forgetting them when life got messy. I built this as a quick manual to get back on track whenever I felt like the world was just not moving.",
   ],
   pullQuote: "If a chapter doesn\u2019t change something you do tomorrow, it doesn\u2019t belong in the book.",
 };
@@ -130,3 +80,46 @@ export const footer = {
   privacy: "Your email is used only to send the preview. Unsubscribe anytime.",
   privacyLink: "Privacy",
 };
+
+export const chapters = [
+  "Why read the book?",
+  "Do you know how I got the idea for this book?",
+  "Why are the chapters asking you questions?",
+  "The Engine of Purpose",
+  "What if it actually works?",
+  "Have you heard of the hidden story?",
+  "Simple test",
+  "Simple test 2, no actually it’s not simple",
+  "Are you going to read the whole book?",
+  "The author is thinking a lot...",
+  "Good Habit, Bad Habit",
+  "Is reading books a good habit?",
+  "How to Read Faster",
+  "Have you thought about your future?",
+  "I care about you, but you gotta trust me",
+  "Title",
+  "Does exercising help us in our daily lives?",
+  "Let’s have a short reading break...by reading",
+  "1% Better Every Day",
+  "Is this the final chapter?",
+  "This is the final chapter",
+  "The Morning",
+  "The Midday",
+  "The Night",
+  "I’m tired of writing this book",
+  "Deleting comments in real life",
+  "The power of being a patient person",
+  "Games",
+  ":)",
+  "Is it possible to bring it to real life?",
+  "All or Nothing",
+  "The 100-Meter Trap",
+  "Input vs. Output",
+  "The 20-Hour Rule",
+  "The Early Deadline",
+  "The Procrastination Bug",
+  "Motivation vs. Discipline",
+  "Locking In",
+  "Nobody Is Coming to Save You",
+  "The Currency of Fulfillment",
+];
