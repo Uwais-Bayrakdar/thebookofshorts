@@ -65,6 +65,7 @@ export const author = {
   "I wrote this book to solve my own problems first, then decided to share it.",
   "I wasn't naturally disciplined. I spent years doom-scrolling, struggling to read consistently, and abandoning workout routines after a couple of days.",
   "I found plenty of useful ideas over the years, but I kept forgetting them when life got messy. I built this as a quick manual to get back on track whenever I felt like the world was just not moving.",
+  "What I'd love to see become a reality is: my generation (Gen-Z) and the next generations having a clear path to become productive and successful, using this book as a bridge to get there."
   ],
   pullQuote: "If a chapter doesn\u2019t change something you do tomorrow, it doesn\u2019t belong in the book.",
 };

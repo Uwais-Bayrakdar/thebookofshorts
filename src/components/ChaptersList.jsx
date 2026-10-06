@@ -9,7 +9,7 @@ export default function ChaptersList() {
           Table of Contents
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-base">
-          Forty standalone chapters. No filler, no required order—flip to any topic and apply it immediately.
+          The rule is simple: instead of top to bottom read, you go to the table of contents, and read the chapter you find it's curious.
         </p>
       </div>
 
