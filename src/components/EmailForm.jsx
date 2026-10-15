@@ -71,7 +71,7 @@ export default function EmailForm() {
 
           {/* Secondary: Raw PDF download */}
           <a
-            href="/preview.pdf"
+            href={`${import.meta.env.BASE_URL}The_Book_of_Shorts_Preview.pdf`}
             download="The_Book_of_Shorts_Preview.pdf"
             className="w-full sm:w-auto text-xs text-zinc-400 hover:text-zinc-200 underline underline-offset-4 py-2"
           >
